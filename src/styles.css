@@ -1,22 +1,72 @@
-@config "../tailwind.config.js";
+/* Configuracion Daisy Ui */
+@config "../tailwind.config.ts";
 @import "tailwindcss";
-@plugin "daisyui";
-@plugin "daisyui";
 
- @plugin "daisyui" {
-   themes: light --default, dark --prefersdark;
- }
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark,
+  halloween,winter,valentine;
+}
+
+
+@theme {
+  --font-primary: "Poppins", sans-serif;
+}
+
 
 
 @plugin "daisyui/theme" {
-  name: "test";
-  default: true; 
-  prefersdark: false; 
-  color-scheme: light; 
+  name: "default";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  font-family: var(--font-primary);
 
-  --color-primary:white;
-  --color-primary-content: oklch(98% 0.01 240);
-  --color-secondary: #e0e0e0;
+  --color-base-100: #ecedec;
+  --color-base-200: #ffff;
+  --color-base-300: oklch(92% 0.04 240);
+  --color-base-content: #000100;
+  --color-primary: #1C5E9B;
+  --color-primary-content: white;
+  --color-secondary: oklch(70% 0.25 200);
   --color-secondary-content: oklch(98% 0.01 200);
-  
+  --color-accent: oklch(65% 0.25 160);
+  --color-accent-content: oklch(98% 0.01 160);
+  --color-neutral: oklch(50% 0.05 240);
+  --color-neutral-content: oklch(98% 0.01 240);
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: oklch(65% 0.25 140);
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: oklch(65% 0.3 30);
+  --color-error-content: oklch(98% 0.01 30);
+
+  /* border radius */
+  --radius-selector: 1.3rem;
+  --radius-field: 0.25rem;
+  --radius-box: 2.5rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* inputs */
+
+
+}
+
+
+
+@layer utilities {
+  .c-input {
+    @apply 
+    w-full
+    min-w-0
+    rounded-lg 
+    border border-[#D0D5DD] 
+    px-6 py-2.5 text-base-content 
+    placeholder:text-[#667085] 
+    focus:border-primary/80 focus:outline-none focus:ring-2 focus:ring-primary/60
+  }
 }
