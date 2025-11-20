@@ -3,28 +3,67 @@
     <section class="w-full h-full flex flex-col justify-center md:w-5/6  items-center gap-2 p-3">
         <div class="w-[100px] h-[100px] bg-gray-400 rounded-smr"></div>
         <h3 class="font-heading text-primary ">INICIA SESION</h3>
+        @switch (step) {
+            @case (0) {
+            <div class="relative flex items-center mb-2">
+                <span class="absolute left-1 text-slate-500">
+                    <svg class="h-5 w-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </span>
+                <input [formControl]="userName" (keyup.enter)="send.click()" type="text" placeholder="Usuario"
+                    class="c-input max-w-[220px] pl-7 " />
+            </div>
 
-        <div class="relative flex items-center mb-2">
-            <span class="absolute left-1 text-slate-500">
-                <svg class="h-5 w-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                        d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                </svg>
-            </span>
-            <input [formControl]="userName"  type="text" placeholder="Usuario" class="c-input max-w-[220px] pl-7 " />
-        </div>
+            <div class="flex gap-2">
+                <input type="checkbox" checked="checked" class="checkbox checkbox-primary rounded-lg" />
+                <label class="text-[14px] text-base-content/60 ">Acepto los terminos y condiciones</label>
+            </div>
 
-        <div class="flex gap-2">
-            <input type="checkbox" checked="checked" class="checkbox checkbox-primary rounded-lg" />
-            <label class="text-[14px] text-base-content/60 ">Acepto los terminos y condiciones</label>
-        </div>
-    
-        <div class="self-center">
-            <button [ngClass]="userName.invalid ? 'btn-disabled' : '' " (click)="sendUser()" class="btn btn-primary">SIGUIENTE</button>
-        </div>
-    
+            <div class="self-center">
+                <button #send [ngClass]="userName.invalid || loading ? 'btn-disabled' : '' " [disabled]="userName.invalid"
+                    (click)="sendUser()" class="btn btn-primary">
+                    @if (loading) {<span class="loading loading-spinner loading-md md:loading-lg"></span>}
+                    @else{SIGUIENTE}
+                </button>
+            </div>
+            }
+            @case (1) {
+                <div class="relative flex items-center mb-2">
+                    <span class="absolute left-1 text-slate-500">
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <path
+                                    d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z">
+                                </path>
+                                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                            </g>
+                        </svg>
+                    </span>
+                    <input [formControl]="userName" type="text" placeholder="Contraseña" class="c-input max-w-[220px] pl-7 " />
+                </div>
+                <div class="self-center flex gap-5">
+                    <button class="btn btn-secondary"
+                    (click)="reset()"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path fill-rule="evenodd"
+                                d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm5.03 4.72a.75.75 0 0 1 0 1.06l-1.72 1.72h10.94a.75.75 0 0 1 0 1.5H10.81l1.72 1.72a.75.75 0 1 1-1.06 1.06l-3-3a.75.75 0 0 1 0-1.06l3-3a.75.75 0 0 1 1.06 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                        Regresar</button>
+                    <button class="btn btn-primary">Autenticar</button>
+                </div>
+
+            }
+        }
+
+
     </section>
 
 </div>

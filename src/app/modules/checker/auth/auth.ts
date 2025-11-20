@@ -12,11 +12,13 @@ import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators 
   templateUrl: './auth.html',
   styleUrl: './auth.css',
 })
-export class Auth implements OnInit{
-  public userName!:FormControl
-
-  constructor(private fb:FormBuilder){
-    this.userName =new FormControl('',
+export class Auth implements OnInit {
+  public userName!: FormControl
+  public typeAuth!:number
+  public step:number = 0;
+  public loading = false;
+  constructor(private fb: FormBuilder) {
+    this.userName = new FormControl('',
       [
         Validators.required,
         Validators.minLength(6),
@@ -25,9 +27,16 @@ export class Auth implements OnInit{
     )
   }
 
-  ngOnInit(): void {}
-  sendUser(){
-    console.log(this.userName.value);
+  ngOnInit(): void { }
+
+  sendUser() {
+    this.loading = true;
+    setTimeout(() => { this.loading = false; this.typeAuth=1, this.step=1}, 3200);
+  }
+
+  reset(){
+    this.step =0
+    this.userName.reset();
   }
 
 
