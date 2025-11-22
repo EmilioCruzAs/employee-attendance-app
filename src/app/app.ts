@@ -16,6 +16,6 @@ export class App implements OnInit {
   }
 
   changeTheme(){
-    this.doc.documentElement.setAttribute("data-theme","default");
+    this.doc.documentElement.setAttribute("data-theme","valentine");
   }
 }

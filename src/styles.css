@@ -27,7 +27,7 @@
   --color-base-content: #000100;
   --color-primary: #1C5E9B;
   --color-primary-content: white;
-  --color-secondary: oklch(70% 0.25 200);
+  --color-secondary: #1584ec;;
   --color-secondary-content: oklch(98% 0.01 200);
   --color-accent: oklch(65% 0.25 160);
   --color-accent-content: oklch(98% 0.01 160);
@@ -55,7 +55,23 @@
 
 
 }
+[data-theme="winter"] .gradient-theme {
+  @apply bg-gradient-to-r from-primary to-cyan-500;
+}
 
+/* HALLOWEEN */
+[data-theme="halloween"] .gradient-theme {
+  @apply bg-gradient-to-br from-orange-600 to-purple-700;
+}
+
+/* VALENTINE */
+[data-theme="valentine"] .gradient-theme {
+  @apply bg-gradient-to-r from-pink-400 to-red-500;
+}
+
+[data-theme="default"] .gradient-theme {
+  @apply bg-gradient-to-r from-primary to-secondary;
+}
 
 
 @layer utilities {
@@ -70,3 +86,10 @@
     focus:border-primary/80 focus:outline-none focus:ring-2 focus:ring-primary/60
   }
 }
+
+.gradient-theme {
+  background: linear-gradient(135deg, var(--p) 0%, var(--s) 100%);
+}
+
+
+
