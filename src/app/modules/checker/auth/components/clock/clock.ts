@@ -19,7 +19,8 @@ export class Clock {
   format(date:Date){
     return dayjs(date).format("HH : mm : ss");
   }
+  
   formatYear(date:Date){
-    return dayjs(date).format("dddd, d MMMM YYYY" ).toLocaleUpperCase()
+    return dayjs(date).format("dddd, D MMMM YYYY" ).toLocaleUpperCase()
   }
 }

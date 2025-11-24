@@ -2,6 +2,10 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Clock } from "./components/clock/clock";
+import { ModalService } from '../../../core/services/modal.service';
+import { Alert } from '../../../shared/components/alert/alert';
+import { SuccessCheck } from './components/dialogs/success-check/success-check';
+import { ModalConfigModel } from '../../../core/models/modal.interface';
 
 @Component({
   selector: 'app-auth',
@@ -10,23 +14,25 @@ import { Clock } from "./components/clock/clock";
     ReactiveFormsModule,
     Clock,
     FormsModule
-],
+  ],
   templateUrl: './auth.html',
   styleUrl: './auth.css',
-  providers:[
+  providers: [
     DatePipe
   ]
 })
 export class Auth implements OnInit {
   public userName!: FormControl
-  public typeAuth!:number
-  public pwd!:string;
-  public step:number = 0;
+  public typeAuth!: number
+  public pwd!: string;
+  public step: number = 0;
   public loading = false;
+  public pwdShow = false
 
-  public pwdShow=  false
-
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private modalService: ModalService
+  ) {
     this.userName = new FormControl('',
       [
         Validators.required,
@@ -40,23 +46,36 @@ export class Auth implements OnInit {
 
   sendUser() {
     this.loading = true;
-    setTimeout(() => { this.loading = false; this.typeAuth=2, this.step=2}, 1200);
+    setTimeout(() => {
+      this.loading = false;
+      this.typeAuth = 1,
+        this.step = 1
+    }, 1200);
   }
 
-  senPassWord(){
-    this.loading=true
-    setTimeout(() => { this.loading = false; }, 1200);
+  sendPassWord() {
+    this.loading = true
+    setTimeout(() => { this.loading = false; this.openSuccessDialog() },
+      1800);
 
   }
 
-  togglePassword(){
-    this.pwdShow = !this.pwdShow    
+  togglePassword() {
+    this.pwdShow = !this.pwdShow
   }
 
-  reset(){
-    this.step =0
+  reset() {
+    this.step = 0
     this.userName.reset();
-    this.pwd="";
+    this.pwd = "";
+  }
+
+  openSuccessDialog() {
+    this.modalService.open(SuccessCheck, {
+      data: {
+        message: 'HORA DE SALIDA REGISTRADA CON EXITO',
+      } as ModalConfigModel<{ message: string }>
+    })
   }
 
 

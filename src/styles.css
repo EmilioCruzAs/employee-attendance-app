@@ -4,7 +4,7 @@
 
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark,
-  halloween,winter,valentine;
+    halloween, winter, valentine;
 }
 
 
@@ -12,6 +12,9 @@
   --font-primary: "Poppins", sans-serif;
 }
 
+.cdk-dialog-container:focus {
+  outline: none !important;
+}
 
 
 @plugin "daisyui/theme" {
@@ -27,7 +30,8 @@
   --color-base-content: #000100;
   --color-primary: #1C5E9B;
   --color-primary-content: white;
-  --color-secondary: #1584ec;;
+  --color-secondary: #1584ec;
+  ;
   --color-secondary-content: oklch(98% 0.01 200);
   --color-accent: oklch(65% 0.25 160);
   --color-accent-content: oklch(98% 0.01 160);
@@ -55,6 +59,8 @@
 
 
 }
+
+
 [data-theme="winter"] .gradient-theme {
   @apply bg-gradient-to-r from-primary to-cyan-500;
 }
@@ -76,20 +82,10 @@
 
 @layer utilities {
   .c-input {
-    @apply 
-    w-full
-    min-w-0
-    rounded-lg 
-    border border-[#D0D5DD] 
-    px-6 py-2.5 text-base-content 
-    placeholder:text-[#667085] 
-    focus:border-primary/80 focus:outline-none focus:ring-2 focus:ring-primary/60
+    @apply w-full min-w-0 rounded-lg border border-[#D0D5DD] px-6 py-2.5 text-base-content placeholder:text-[#667085] focus:border-primary/80 focus:outline-none focus:ring-2 focus:ring-primary/60
   }
 }
 
 .gradient-theme {
   background: linear-gradient(135deg, var(--p) 0%, var(--s) 100%);
 }
-
-
-
