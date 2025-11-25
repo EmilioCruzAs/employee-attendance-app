@@ -22,7 +22,8 @@ export class Skeleton implements AfterViewInit {
   }
 
   setTheme() {
-    const container = document.documentElement
+    //const container = document.documentElement
+    const container = document.getElementById('main-container')
     container?.setAttribute("data-theme", this.theme)
   }
 }

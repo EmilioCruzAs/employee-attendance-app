@@ -18,16 +18,16 @@ export class ThemeService {
         ],
         ["halloween",
             [
-                // { month: 9, day: 25 },
-                // { month: 10, day: 3 }
-                { month: 10, day: 22 },
-                { month: 10, day: 24 }
+                { month: 9, day: 25 },
+                { month: 10, day: 3 }
+                // { month: 10, day: 25 },
+                // { month: 10, day: 24 }
             ]
         ],
         ["winter",
             [
-                // { month: 10, day: 22 },
-                // { month: 11, day: 30 }
+                { month: 10, day: 24 },
+                { month: 11, day: 30 }
             ]
         ]
     ])
@@ -45,6 +45,7 @@ export class ThemeService {
 
     public getTheme() {
         for (const [key, range] of this.templates) {
+            if (!range || range.length < 2) continue;
             const [start, end] = range
             if (this.isTodayBetween(start, end)) {
                 return key;

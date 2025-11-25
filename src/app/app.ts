@@ -9,13 +9,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App implements OnInit {
   protected readonly title = signal('checker-front');
-  private readonly doc = inject(DOCUMENT)
-  
+
   ngOnInit(): void {
-    this.changeTheme()
   }
 
-  changeTheme(){
-    this.doc.documentElement.setAttribute("data-theme","valentine");
-  }
+
 }

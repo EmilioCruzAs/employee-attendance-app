@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Clock } from "./components/clock/clock";
 import { ModalService } from '../../../core/services/modal.service';
-import { Alert } from '../../../shared/components/alert/alert';
 import { SuccessCheck } from './components/dialogs/success-check/success-check';
 import { ModalConfigModel } from '../../../core/models/modal.interface';
+import { AlertService } from '../../../core/services/alert.service';
 
 @Component({
   selector: 'app-auth',
@@ -31,7 +31,8 @@ export class Auth implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private alertService: AlertService
   ) {
     this.userName = new FormControl('',
       [
@@ -48,17 +49,28 @@ export class Auth implements OnInit {
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
-      this.typeAuth = 1,
-        this.step = 1
+      this.typeAuth = 2,
+        this.step = 2
+    }, 1200);
+
+    setTimeout(() => {
+      this.senFingerPrint()
     }, 1200);
   }
 
   sendPassWord() {
     this.loading = true
-    setTimeout(() => { this.loading = false; this.openSuccessDialog() },
+    setTimeout(() => { this.loading = false; this.openAlertError() },
       1800);
 
   }
+
+  senFingerPrint() {
+    this.loading = true;
+    setTimeout(() => { this.loading = false; this.openSuccessDialog() },
+      1800);
+  }
+
 
   togglePassword() {
     this.pwdShow = !this.pwdShow
@@ -78,5 +90,11 @@ export class Auth implements OnInit {
     })
   }
 
+  openAlertError() {
+    this.alertService.openError('Incidencia al autenticar', 'El usuario no se encuentra registrado')
+  }
+
 
 }
+
+

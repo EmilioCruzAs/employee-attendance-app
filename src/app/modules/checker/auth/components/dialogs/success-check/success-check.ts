@@ -14,9 +14,9 @@ export class SuccessCheck {
     public data: { message: string }
     constructor() {
         this.data = this.dialogRef.config.data as { message: string }
-        // setTimeout(() => {
-        //     this.close()
-        // }, 3000)
+        setTimeout(() => {
+            this.close()
+        }, 3000)
     }
 
 
