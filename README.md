@@ -1,84 +1,78 @@
-# 📌 Employee-attendance-app  
-**Open-source employee attendance tracking front-end built with Angular.**
+# 📌 employee-attendance-app  
+**Open-source employee attendance tracking front-end built with Angular 20.**
 
 Aplicación de control de asistencia laboral diseñada como un proyecto de portafolio profesional y como una base open-source que empresas pueden adaptar a sus propios flujos de trabajo.  
-Incluye flujos de **entrada**, **salida**, **comida**, **regreso de comida** y **salida laboral**, siguiendo un enfoque modular y escalable basado en *feature modules*.
+Incluye flujos de **entrada**, **salida**, **comida**, **regreso de comida** y **salida laboral**, siguiendo una arquitectura modular por *features*.
 
 ---
 
 ## 🚀 Características principales
 
-- ✔ **Check-in / Check-out**  
-- ✔ **Registro de comida (salida y regreso)**  
-- ✔ **Manejo de rachas y visualización de estados**  
-- ✔ **Pantallas de publicidad e indicadores resaltando acción actual**  
-- ✔ **Historial de movimientos**  
-- ✔ **Módulo administrativo completo (opcional)**  
-- ✔ **Arquitectura limpia y basada en módulos**  
-- ✔ **Interfaces reutilizables y servicios desacoplados**  
-- ✔ **Preparado para integrarse con cualquier API REST**
+- ✔ Flujo completo del checador (entrada, salida, comida, regreso)  
+- ✔ Visualización de rachas (días cumplidos)  
+- ✔ Publicidad rotativa para modo kiosko  
+- ✔ Mensajes de éxito y error con diseño profesional  
+- ✔ Módulo administrativo para gestionar:  
+  - Publicidad  
+  - Empleados  
+  - Chequeos  
+  - Reportes  
+- ✔ Arquitectura escalable basada en módulos  
+- ✔ Estilos modernos con **TailwindCSS** + **DaisyUI**  
+- ✔ Conectable a cualquier API REST  
 
 ---
 
-## 🧱 Arquitectura del Proyecto (Feature Modules)
+# 🧱 Arquitectura del Proyecto (Feature Modules)
 
-Este proyecto utiliza una arquitectura basada en **módulos por funcionalidad**, facilitando la escalabilidad y la organización del código.
+Este proyecto sigue **feature-based architecture**, permitiendo escalar sin perder organización.
 
-### 📦 `checker` Module
-Representa toda la lógica del **checador**.  
-Incluye:
+### 📦 `checker` Module  
+Contiene toda la lógica del checador:
 
-- Pantalla principal del checador
-- Publicidad rotativa
-- Registro de entrada, salida y comida
-- Mensajes de éxito / error
-- Vista de rachas (cuántos días lleva sin faltar)
-- Vista de último registro
-- Flujo UX optimizado para uso en kiosko
+- Pantalla principal  
+- Publicidad / banners  
+- Registro de entrada y salida  
+- Registro de comida  
+- Mensajes de éxito  
+- Vista de rachas  
+- Vista de último movimiento  
+- UX diseñada para kioskos
 
-Este módulo está pensado para que pueda ejecutarse como un módulo independiente o integrarse en sistemas reales de asistencia.
+### 🛠️ `admin` Module  
+Módulo para administradores:
 
----
+- Gestión de publicidad  
+- Control de registros  
+- Reportes  
+- Configuraciones generales del checador  
+- Administración de empleados (si se habilita)
 
-### 🛠️ `admin` Module
-Módulo exclusivo para **administradores**, encargado de:
+### 🧩 Otros módulos
 
-- Configurar qué imágenes o publicidad se muestran en el checador  
-- Ver y administrar registros de asistencia  
-- Generar reportes  
-- Activar, desactivar o reiniciar el checador  
-- Administración básica de usuarios y permisos  
-
-Este módulo no es accesible para los empleados; requiere autenticación.
-
----
-
-### 🧩 Otros módulos (según implementación)
-
-- `auth` – autenticación (si aplica)  
-- `shared` – componentes comunes  
+- `auth` – autenticación / permisos  
+- `shared` – componentes y pipes comunes  
 - `core` – servicios globales e interceptores  
 
-Esta separación modular facilita que empresas adapten fácilmente solo los módulos necesarios.
-
 ---
 
-## 🔧 Tecnologías utilizadas
+# 🔧 Tecnologías utilizadas
 
-- **Angular 17+**
+- **Angular 20**
 - **TypeScript**
 - **RxJS**
-- **PrimeNG / Angular Material**
-- **SCSS**
+- **TailwindCSS**
+- **DaisyUI**
 - **Feature Modules Architecture**
 - **Clean Architecture Frontend**
 
 ---
 
-## 📦 Instalación
+# 📦 Instalación del proyecto
 
 ```bash
 git clone https://github.com/<tu-usuario>/employee-attendance-app.git
 cd employee-attendance-app
 npm install
 ng serve -o
+
