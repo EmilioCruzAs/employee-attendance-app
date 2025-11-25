@@ -1,4 +1,4 @@
-# 📌 employee-attendance-app  
+# 📌 Employee-attendance-app  
 **Open-source employee attendance tracking front-end built with Angular.**
 
 Aplicación de control de asistencia laboral diseñada como un proyecto de portafolio profesional y como una base open-source que empresas pueden adaptar a sus propios flujos de trabajo.  
