@@ -26,7 +26,7 @@ export class ThemeService {
         ],
         ["winter",
             [
-                { month: 10, day: 24 },
+                { month: 10, day: 25 },
                 { month: 11, day: 30 }
             ]
         ]

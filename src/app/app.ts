@@ -1,5 +1,7 @@
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, DOCUMENT, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,10 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit {
+export class App {
   protected readonly title = signal('checker-front');
 
-  ngOnInit(): void {
-  }
+
 
 
 }

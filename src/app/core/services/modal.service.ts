@@ -9,12 +9,12 @@ export class ModalService {
 
     private dialog = inject(Dialog)
     constructor() { }
-
     open(component: ComponentType<any>, config: ModalConfigModel<any>) {
         this.dialog.open(component, {
             disableClose: true,
             ...config,
-            restoreFocus: true
+            restoreFocus: true,
+
         })
     }
 
