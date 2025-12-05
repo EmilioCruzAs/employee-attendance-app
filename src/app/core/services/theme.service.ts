@@ -21,13 +21,14 @@ export class ThemeService {
                 { month: 9, day: 25 },
                 { month: 10, day: 3 }
                 // { month: 10, day: 25 },
-                // { month: 10, day: 24 }
+                // { month: 11, day: 5 }
             ]
         ],
         ["winter",
             [
-                { month: 10, day: 25 },
-                { month: 11, day: 30 }
+                // { month: 10, day: 25 },
+                // { month: 11, day: 5 }
+                
             ]
         ]
     ])

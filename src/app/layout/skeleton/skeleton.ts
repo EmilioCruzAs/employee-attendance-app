@@ -1,29 +1,38 @@
-import { AfterViewInit, Component, inject } from '@angular/core';
+import { AfterViewInit, Component, effect, HostBinding, inject } from '@angular/core';
 import { Publicity } from "../../modules/checker/publicity/publicity";
 import { Auth } from "../../modules/checker/auth/auth";
 import { ThemeService } from '../../core/services/theme.service';
+import { ThemeDecorations } from '../../core/constants/theme-decoration';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-skeleton',
-  imports: [Publicity, Auth],
+  imports: [
+    CommonModule,
+    Publicity, Auth],
   templateUrl: './skeleton.html',
   styleUrl: './skeleton.css',
 })
-export class Skeleton implements AfterViewInit {
-  private themeService = inject(ThemeService);
-  private theme = this.themeService.getTheme()
+export class Skeleton {
 
-  constructor() {
-    this.setTheme()
+  @HostBinding('attr.data-theme') dataTheme = 'default';
+
+  decorationLeft = '';
+  decorationRight = '';
+  decorationCenter:string|undefined = '';
+
+  constructor(private themeService: ThemeService) {
+    effect(() => {
+      const theme = this.themeService.getTheme();
+
+      const decorations = ThemeDecorations[theme] ?? ThemeDecorations['default'];
+
+      this.decorationLeft = decorations.left;
+      this.decorationRight = decorations.right;
+      this.decorationCenter = decorations.center
+      this.dataTheme = theme;
+    });
   }
 
-  ngAfterViewInit(): void {
-    this.setTheme()
-  }
 
-  setTheme() {
-    //const container = document.documentElement
-    const container = document.getElementById('main-container')
-    container?.setAttribute("data-theme", this.theme)
-  }
 }
