@@ -20,14 +20,12 @@ export class ThemeService {
             [
                 { month: 9, day: 25 },
                 { month: 10, day: 3 }
-                // { month: 10, day: 25 },
-                // { month: 11, day: 5 }
             ]
         ],
         ["winter",
             [
-                // { month: 10, day: 25 },
-                // { month: 11, day: 5 }
+                { month: 10, day: 25 },
+                { month: 11, day: 31 }
                 
             ]
         ]
@@ -37,22 +35,22 @@ export class ThemeService {
     private isTodayBetween(startDate: { month: number, day: number },
         endDate: { month: number, day: number }
     ) {
-        const year = dayjs().year()
-        const start = dayjs(`${new Date(year, startDate.month, startDate.day)}`)
-        const end = dayjs(`${new Date(year, endDate.month, endDate.day)}`)
-        const today = dayjs()
-        return today.isBetween(start, end, 'day', '[]')
+        const year = dayjs().year();
+        const start = dayjs(`${new Date(year, startDate.month, startDate.day)}`);
+        const end = dayjs(`${new Date(year, endDate.month, endDate.day)}`);
+        const today = dayjs();
+        return today.isBetween(start, end, 'day', '[]');
     }
 
     public getTheme() {
         for (const [key, range] of this.templates) {
             if (!range || range.length < 2) continue;
-            const [start, end] = range
+            const [start, end] = range;
             if (this.isTodayBetween(start, end)) {
                 return key;
             }
         }
-        return "default"
+        return "default";
     }
 
 }

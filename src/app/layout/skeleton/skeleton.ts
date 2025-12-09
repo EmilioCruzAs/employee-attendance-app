@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, effect, HostBinding, inject } from '@angular/core';
+import { Component, effect, HostBinding} from '@angular/core';
 import { Publicity } from "../../modules/checker/publicity/publicity";
 import { Auth } from "../../modules/checker/auth/auth";
 import { ThemeService } from '../../core/services/theme.service';
@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
 export class Skeleton {
 
   @HostBinding('attr.data-theme') dataTheme = 'default';
-
   decorationLeft = '';
   decorationRight = '';
   decorationCenter:string|undefined = '';
@@ -24,9 +23,9 @@ export class Skeleton {
   constructor(private themeService: ThemeService) {
     effect(() => {
       const theme = this.themeService.getTheme();
-
       const decorations = ThemeDecorations[theme] ?? ThemeDecorations['default'];
-
+      console.log(theme);
+      
       this.decorationLeft = decorations.left;
       this.decorationRight = decorations.right;
       this.decorationCenter = decorations.center
