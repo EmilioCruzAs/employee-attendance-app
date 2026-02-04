@@ -15,7 +15,6 @@ export class Publicity implements OnInit {
     "https://img.freepik.com/free-photo/architecture-ancient-monument-world-heritage-day-celebration_23-2151297236.jpg?semt=ais_hybrid&w=740&q=80",
     "https://applescoop.org/image/wallpapers/mac/4k-old-chinese-town-14-10-2024-1728961377-hd-wallpaper.jpg",
     "https://images6.alphacoders.com/560/560908.jpg",
-
   ]
 
 
