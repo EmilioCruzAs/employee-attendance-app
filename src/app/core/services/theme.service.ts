@@ -12,7 +12,7 @@ export class ThemeService {
     private templates: Map<string, { month: number; day: number }[]> = new Map([
         ["valentine",
             [
-                { month: 1, day: 12 },
+                { month: 1, day: 3 },
                 { month: 1, day: 15 }
             ]
         ],
@@ -20,8 +20,6 @@ export class ThemeService {
             [
                 { month: 9, day: 25 },
                 { month: 10, day: 3 }
-                // { month: 10, day: 25 },
-                // { month: 10, day: 24 }
             ]
         ],
         ["winter",
@@ -52,6 +50,11 @@ export class ThemeService {
             }
         }
         return "default"
+    }
+
+    public applyTheme(theme: string) {
+        const body = document.body;
+        body.setAttribute("data-theme", theme);
     }
 
 }

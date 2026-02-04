@@ -1,11 +1,12 @@
-<div class="w-full h-full">
+<div class="w-full h-full bg-base-200 ">
     <div class="carousel w-full h-full">
-            <div [id]="'main'"  class="carousel-item relative w-full ">
-            <img class="object-cover w-full" [src]="images[currentIndex]" />
+        <div [id]="'main'" class="carousel-item relative w-full ">
+            <img class="object-contain w-full" [src]="images[currentIndex]" />
 
             <div class="absolute inset-x-0 bottom-0 h-16 flex justify-center items-center gap-2">
                 @for (current of images; track $index) {
-                    <button (click)="changeIndex($index)" [ngClass]="$index == currentIndex ? 'bg-white' : ''"  class="btn w-[60px] h-[9px] bg-gray-500 border-0"></button>       
+                <button (click)="changeIndex($index)" [ngClass]="$index == currentIndex ? 'bg-white' : ''"
+                    class="btn w-[60px] h-[9px] bg-gray-500 border-0"></button>
                 }
             </div>
         </div>

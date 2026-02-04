@@ -11,19 +11,16 @@ import { ThemeService } from '../../core/services/theme.service';
 })
 export class Skeleton implements AfterViewInit {
   private themeService = inject(ThemeService);
-  private theme = this.themeService.getTheme()
-
   constructor() {
-    this.setTheme()
+    this.applyInitialTheme()
   }
 
   ngAfterViewInit(): void {
-    this.setTheme()
+    this.applyInitialTheme()
   }
 
-  setTheme() {
-    //const container = document.documentElement
-    const container = document.getElementById('main-container')
-    container?.setAttribute("data-theme", this.theme)
+  private applyInitialTheme() {
+    const theme = this.themeService.getTheme();
+    this.themeService.applyTheme(theme);
   }
 }
